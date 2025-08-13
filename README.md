@@ -1,46 +1,28 @@
-# Forecasting-Electricity-Congestion-in-NYISO-Using-Machine-Learning
-#Project Overview
-Power grids must deliver electricity efficiently while avoiding costly congestion. In this project, we developed machine learning models to forecast regional electricity demand and identify areas of likely transmission congestion across New York State using publicly available data from the New York Independent System Operator (NYISO).
+# Forecasting Electricity Congestion in NYISO Using Machine Learning
 
-We used XGBoost regression to predict hourly electricity demand and XGBoost classification to predict congestion events. Our models captured complex nonlinear patterns in the data, including seasonal variation, population distribution, and geographic features affecting grid performance.
+## Project Overview
+This project provides tools for analyzing and forecasting electricity congestion and demand in the New York Independent System Operator (NYISO) region. The main analysis is implemented in the `NYCEnergyAnalyzer` class and can be executed as a Python module.
 
-Data Sources
-We used three publicly available datasets from NYISO:
+## Installation
+1. Create a Python virtual environment (recommended).
+2. Install the project in editable mode:
+   ```bash
+   pip install -e .
+   ```
 
-Locational-Based Marginal Pricing (LBMP) – energy price, congestion, and losses (5-minute intervals)
+## Usage
+Run the full analysis with:
+```bash
+python -m nyiso_ml.analyzer
+```
+This command loads the provided data files, trains forecasting models and prints a summary report.
 
-Real-Time Integrated Actual Load – electricity demand in MW across NYISO zones
+## Repository Structure
+- `src/nyiso_ml/analyzer.py`: Core analysis module containing the `NYCEnergyAnalyzer` class.
+- `requirements.txt`: Python dependencies.
+- `pyproject.toml`: Project metadata for packaging.
+- `README.md`: Project documentation.
+- Data CSV files: historical NYISO load and price data (already included).
 
-Weather data – hourly temperature and humidity from NYC weather stations
-
-Time range: 2021–2024
-Regions modeled: West, Genesee, Central, North, Capital, Hudson Valley, Millwood, NYC, Long Island
-
-Machine Learning Approach: Demand Forecasting (Regression)
-Model: XGBoost Regressor
-
-Targets: Hourly electricity demand by region
-
-Evaluation: R², MAPE, RMSE
-
-Performance:
-
-NYC: R² = 0.97, MAPE = 2%
-
-Long Island: R² = 0.97
-
-Other zones: R² between 0.88–0.92
-
-Congestion Classification (Binary Classification)
-Model: XGBoost Classifier
-
-Target: Congestion (Yes/No) based on transmission bottlenecks
-
-Evaluation: Accuracy, Confusion Matrix
-
-Performance:
-
-Accuracy ranged from 71% (NYC) to 98% (North)
-
-Top predictors: Month, LBMP, Demand, Weather
-
+## License
+This project is provided as-is for educational purposes.
